@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include <string>
 
 using namespace std;
 
@@ -37,6 +37,6 @@ public:
 
 	void affiche(); // Affiche toutes les donnée de la classe
 	void suppr(); // Supprime toute les données de la classe
-
+	
 	~mCarte();
 };

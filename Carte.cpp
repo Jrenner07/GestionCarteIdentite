@@ -1,5 +1,5 @@
 #include "Carte.h"
-#include <string>
+
 
 mCarte::mCarte()
 {

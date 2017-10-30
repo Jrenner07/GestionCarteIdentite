@@ -20,6 +20,8 @@ int main()
 	mCarte Carte[100]; // Création du tableau de Carte
 	bool Play = true; // Bool pour savoir si l'application doit s'arretter
 
+
+
 	while (Play){ // Boucle d'utilisation de l'appli    si Faux arrette l'appli
 
 		switch (MainMenu()){	//Menu principale
@@ -44,7 +46,9 @@ int main()
 
 			Play = false;
 			break;
-			
+
+		default:
+			break;			
 		}
 		
 
@@ -85,7 +89,7 @@ system("cls");
 	std::cout << "===============\n";
 
 	cin.ignore();
-	std::cout << "\nNom : " << std::flush;
+	std::cout << "\nNom : ";
 	std::getline (std::cin, Temp);
 	CarteTemp.setNom(Temp);
 
@@ -164,12 +168,18 @@ void AfficheCarte(mCarte Carte[]) {
 
 	if (Carte[ID].getid() == 0) {	//Verif si l'ID est valide
 		std::cout << "ID invalide\n";
-		system("pause");
 
-		MainMenu();
+
+	} else {
+		Carte[ID].affiche();	//Affiche les donnée du tableau de la classe mCarte
 	}
 
-	Carte[ID].affiche();	//Affiche les donnée du tableau de la classe mCarte
+
+		
+		
+
+
+	
 
 	system("pause");
 }
@@ -188,14 +198,17 @@ void SupprCarte(mCarte Carte[]) {
 
 	if (Carte[ID].getid() == 0) {	//Verifie si l'ID est valide
 		std::cout << "ID invalide\n";
-		system("pause");
 
-		MainMenu();
 	}
+	else {
+		Carte[ID].suppr();	//Supprime les données du tableau de classe mCarte
 
-	Carte[ID].suppr();	//Supprime les données du tableau de classe mCarte
+		std::cout << "Carte supprime \n\n ";
+	}
+		
+	
 
-	std::cout << "Carte supprime \n\n ";
+	
 
 	system("pause");
 }
@@ -215,54 +228,57 @@ void ModifCarte(mCarte Carte[]) {
 
 	if (Carte[ID].getid() == 0) {	//Verifie que l'ID est valide
 		std::cout << "ID invalide\n";
-		system("pause");
+	} else {
+		
+		std::cout << "\n\n";
+		Carte[ID].affiche();	//Affiche les donnée
 
-		MainMenu();
+		std::cout << "\n\nInfomration a modifier ?\n";
+		std::cout << "1/ Nom\n";
+		std::cout << "2/ Prenom\n";
+		std::cout << "3/ Adresse\n";
+		std::cout << "4/ Code Postal\n";
+		std::cout << "5/ Ville\n";
+
+		std::cin >> EditChoice;	//Choix de la donnée à modifié
+
+		std::cout << "\n\nEntrez la nouvelle information :\n";
+
+		cin.ignore();
+		std::getline(std::cin, Temp);
+
+		switch (EditChoice) {	//Switch pour la modification de la valeur choisis dans le tableau de la classe mCarte
+
+		case 1:
+			Carte[ID].setNom(Temp);
+			break;
+
+		case 2:
+			Carte[ID].setPrenom(Temp);
+			break;
+
+		case 3:
+			Carte[ID].setAdresse(Temp);
+			break;
+
+		case 4:
+			Carte[ID].setCodePostal(Temp);
+			break;
+
+		case 5:
+			Carte[ID].setVille(Temp);
+			break;
+
+		}
+
+		std::cout << "\n\nModification effectue\n";
+
 	}
 
 
-	std::cout << "\n\n";
-	Carte[ID].affiche();	//Affiche les donnée
 
-	std::cout << "\n\nInfomration a modifier ?\n";
-	std::cout << "1/ Nom\n";
-	std::cout << "2/ Prenom\n";
-	std::cout << "3/ Adresse\n";
-	std::cout << "4/ Code Postal\n";
-	std::cout << "5/ Ville\n";
 
-	std::cin >> EditChoice;	//Choix de la donnée à modifié
 
-	std::cout << "\n\nEntrez la nouvelle information :\n";
-
-	cin.ignore();
-	std::getline(std::cin, Temp);
-
-	switch (EditChoice) {	//Switch pour la modification de la valeur choisis dans le tableau de la classe mCarte
-
-	case 1:
-		Carte[ID].setNom(Temp);
-		break;
-
-	case 2:
-		Carte[ID].setPrenom(Temp);
-		break;
-
-	case 3:
-		Carte[ID].setAdresse(Temp);
-		break;
-
-	case 4:
-		Carte[ID].setCodePostal(Temp);
-		break;
-
-	case 5:
-		Carte[ID].setVille(Temp);
-		break;
-
-	}
-
-	std::cout << "\n\nModification effectue\n";
 
 
 	system("pause");
