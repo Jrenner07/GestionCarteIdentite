@@ -276,11 +276,6 @@ void ModifCarte(mCarte Carte[]) {
 	}
 
 
-
-
-
-
-
 	system("pause");
 
 
